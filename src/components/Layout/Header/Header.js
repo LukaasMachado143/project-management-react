@@ -10,15 +10,12 @@ function Header() {
                 <ul className={styles.list}>
                     <li className={styles.item}>
                         <Link to="/">Home</Link>
-
                     </li>
                     <li className={styles.item}>
                         <Link to="/contact">Contato</Link>
-
                     </li>
                     <li className={styles.item}>
                         <Link to="/company">Sobre a Empresa</Link>
-
                     </li>
                 </ul>
             </Container>
