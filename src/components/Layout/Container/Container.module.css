@@ -1,5 +1,5 @@
 .container {
-    max-width: 1200PX;
+    width: 1200PX;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;

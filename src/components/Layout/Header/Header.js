@@ -1,10 +1,29 @@
-import { BrowserRouter as Link } from "react-router-dom"
+import { Link } from "react-router-dom"
+import Container from '../Container/Container'
+import styles from './Header.module.css'
+import logo from '../../../img/costs_logo.png'
 function Header() {
-    return (<div>
-        <Link to="/">Home</Link>
-        <Link to="/contact">Contato</Link>
-        <Link to="/company">Sobre a Empresa</Link>
-        <Link to="/newproject">Novo Projeto</Link>
-    </div>);
+    return (
+        <nav className={styles.header}>
+            <Container>
+                <Link to="/"><img src={logo} /></Link>
+                <ul className={styles.list}>
+                    <li className={styles.item}>
+                        <Link to="/">Home</Link>
+
+                    </li>
+                    <li className={styles.item}>
+                        <Link to="/contact">Contato</Link>
+
+                    </li>
+                    <li className={styles.item}>
+                        <Link to="/company">Sobre a Empresa</Link>
+
+                    </li>
+                </ul>
+            </Container>
+        </nav>
+
+    );
 }
 export default Header
