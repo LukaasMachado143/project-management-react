@@ -1,6 +1,6 @@
 import styles from './Home.module.css'
-import savings from '../../../img/savings.svg'
-import LinkButton from '../../Layout/LinkButton/LinkButton'
+import savings from '../../img/savings.svg'
+import LinkButton from '../../components/LinkButton/LinkButton'
 function Home() {
     return (
         <section className={styles.homeContainer}>

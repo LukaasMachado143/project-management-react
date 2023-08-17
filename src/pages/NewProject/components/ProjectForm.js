@@ -1,6 +1,6 @@
-import SelectField from '../../../Layout/Inputs/SelectField/SelectField'
-import SubmitButton from '../../../Layout/Inputs/SubmitButton/SubmitButton'
-import TextField from '../../../Layout/Inputs/TextField/TextField'
+import SelectField from '../../../components/Inputs/SelectField/SelectField'
+import SubmitButton from '../../../components/Inputs/SubmitButton/SubmitButton'
+import TextField from '../../../components/Inputs/TextField/TextField'
 import styles from './ProjectForm.module.css'
 
 function ProjectForm({ btnText }) {
