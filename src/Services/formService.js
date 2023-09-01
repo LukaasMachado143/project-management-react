@@ -5,6 +5,10 @@ export default class FormService {
         return await axiosInstance.get("categories")
     }
 
+    async getProjects() {
+        return await axiosInstance.get("projects")
+    }
+
     async insertNewProject(request) {
         return await axiosInstance.post("projects", request)
     }

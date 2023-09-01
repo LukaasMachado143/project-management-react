@@ -16,7 +16,7 @@
       "budget": "1811",
       "categories": {
         "id": "4",
-        "name": "Planejanemto"
+        "name": "Planejamento"
       },
       "cost": 0,
       "services": [],
@@ -93,7 +93,7 @@
     },
     {
       "id": 4,
-      "name": "Planejanemto"
+      "name": "Planejamento"
     }
   ]
 }
