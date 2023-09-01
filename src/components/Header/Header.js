@@ -12,6 +12,9 @@ function Header() {
                         <Link to="/">Home</Link>
                     </li>
                     <li className={styles.item}>
+                        <Link to="/projects">Projetos</Link>
+                    </li>
+                    <li className={styles.item}>
                         <Link to="/contact">Contato</Link>
                     </li>
                     <li className={styles.item}>
