@@ -21,6 +21,61 @@
       "cost": 0,
       "services": [],
       "id": 2
+    },
+    {
+      "name": "Lucas Fernando",
+      "budget": "52000",
+      "categories": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
+    },
+    {
+      "name": "as",
+      "budget": "4520",
+      "categories": {
+        "id": "1",
+        "name": "Infra"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 4
+    },
+    {
+      "name": "Lucas Fernando de Oliveira Machado",
+      "budget": "520",
+      "categories": {
+        "id": "1",
+        "name": "Infra"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 5
+    },
+    {
+      "name": "C# PARA INICIANTES",
+      "budget": "500",
+      "categories": {
+        "id": "1",
+        "name": "Infra"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 6
+    },
+    {
+      "name": "Lucas Fernando de Oliveira Machado",
+      "budget": "520",
+      "categories": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 7
     }
   ],
   "categories": [

@@ -13,15 +13,13 @@ function NewProject() {
         service.insertNewProject(project)
             .then((res) => {
                 if (res.status == 201) {
-                    alert('Projeto adicionado com sucesso !')
-                    navigate("/projects", { state: { message: "Projeto adicionado com sucesso !" } })
+                    navigate("/projects", { state: { message: "Projeto adicionado com sucesso !", type: "success" } })
                 } else {
-                    alert('Problemas ao adicionar projeto.')
-
+                    navigate("/projects", { state: { message: "Problemas ao adicionar projeto", type: "error" } })
                 }
             }).catch((error) => {
+                navigate("/projects", { state: { message: "Erro ao adicionar projeto", type: "error" } })
                 console.log('Erro do insertNewProject:  ', error)
-
             })
     }
 
