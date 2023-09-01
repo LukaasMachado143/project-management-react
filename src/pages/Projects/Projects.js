@@ -1,6 +1,6 @@
 import styles from "./Projects.module.css"
 import Message from "../../components/Message/Message"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import LinkButton from "../../components/LinkButton/LinkButton"
 import Container from "../../components/Container/Container"
 import Loading from "../../components/Loading/Loading"
@@ -9,14 +9,18 @@ import FormService from "../../Services/formService"
 import ProjectCard from "./ProjectCard/ProjectCard"
 function Projects() {
     const service = new FormService();
+    const location = useLocation()
+    const navigate = useNavigate()
     const [projects, setProjects] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [projectMessage, setProjectMessage] = useState({ message: "", type: "" })
 
-    const location = useLocation()
-    if (location.state) {
-        setProjectMessage({ message: location.state.message, type: location.state.type })
-    }
+    useEffect(() => {
+        if (location.state) {
+            setProjectMessage({ message: location.state.message, type: location.state.type })
+            navigate({ ...location, state: null });
+        }
+    }, [])
 
     useEffect(() => {
         setIsLoading(true)
@@ -44,7 +48,6 @@ function Projects() {
             console.log('Error in getProjects: ', error)
         }).finally(() => {
             setIsLoading(false)
-            setProjectMessage({ message: "", type: "" })
         })
     }
 
@@ -54,14 +57,20 @@ function Projects() {
                 <h1>Meus Projetos</h1>
                 <LinkButton to='/newproject' text='Criar Projeto' />
             </div>
-            {projectMessage && <Message msg={projectMessage.message} type={projectMessage.type} timeOut={3500} />}
+            {projectMessage.message != "" && projectMessage.type != "" &&
+                <Message
+                    msg={projectMessage.message}
+                    type={projectMessage.type}
+                    handleCleanMessage={() => setProjectMessage({ message: "", type: "" })}
+                />
+            }
             <Container customClass="start">
                 {projects.length > 0 && !isLoading && projects.map((project) => (
                     <ProjectCard key={project.id} data={project} handleDeleteProject={deleteProject} />
                 ))}
                 {isLoading && <Loading />}
                 {!isLoading && projects.length === 0 && (<p>Não há Projetos cadastrados.</p>)}
-            </Container>\
+            </Container>
         </div>
     )
 }

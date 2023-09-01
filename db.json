@@ -1,48 +1,26 @@
 {
   "projects": [
     {
-      "name": "as",
-      "budget": "4520",
+      "name": "sds",
+      "budget": "50",
       "categories": {
-        "id": "1",
-        "name": "Infra"
+        "id": "3",
+        "name": "Design"
       },
       "cost": 0,
       "services": [],
-      "id": 4
-    },
-    {
-      "name": "Lucas Fernando de Oliveira Machado",
-      "budget": "520",
-      "categories": {
-        "id": "1",
-        "name": "Infra"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 5
+      "id": 13
     },
     {
       "name": "C# PARA INICIANTES",
-      "budget": "500",
-      "categories": {
-        "id": "1",
-        "name": "Infra"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 6
-    },
-    {
-      "name": "Lucas Fernando de Oliveira Machado",
-      "budget": "520",
+      "budget": "560",
       "categories": {
         "id": "2",
         "name": "Desenvolvimento"
       },
       "cost": 0,
       "services": [],
-      "id": 7
+      "id": 14
     }
   ],
   "categories": [

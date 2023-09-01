@@ -1,8 +1,14 @@
 import styles from "./Message.module.css"
 import { useState, useEffect } from "react";
 
-function Message({ type, msg, timeOut }) {
+function Message({ type, msg, timeOut, handleCleanMessage }) {
+    const [localTimeOut, setLocalTimeOut] = useState(3500)
     const [visible, setVisible] = useState(false)
+
+    if (timeOut) {
+        setLocalTimeOut(timeOut)
+    }
+
     useEffect(() => {
         if (!msg) {
             setVisible(false)
@@ -12,9 +18,11 @@ function Message({ type, msg, timeOut }) {
 
         const timer = setTimeout(() => {
             setVisible(false)
-        }, timeOut)
+            handleCleanMessage();
+        }, localTimeOut)
         return () => clearTimeout(timer)
     }, [msg])
+
     return (
         <>{
             visible && (
