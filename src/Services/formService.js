@@ -12,4 +12,8 @@ export default class FormService {
     async insertNewProject(request) {
         return await axiosInstance.post("projects", request)
     }
+
+    async deleteProject(id) {
+        return await axiosInstance.delete(`projects/${id}`)
+    }
 }

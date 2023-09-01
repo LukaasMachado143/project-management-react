@@ -1,39 +1,6 @@
 {
   "projects": [
     {
-      "name": "teste",
-      "budget": "15000",
-      "categories": {
-        "id": "2",
-        "name": "Desenvolvimento"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 1
-    },
-    {
-      "name": "bricka",
-      "budget": "1811",
-      "categories": {
-        "id": "4",
-        "name": "Planejamento"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 2
-    },
-    {
-      "name": "Lucas Fernando",
-      "budget": "52000",
-      "categories": {
-        "id": "2",
-        "name": "Desenvolvimento"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 3
-    },
-    {
       "name": "as",
       "budget": "4520",
       "categories": {

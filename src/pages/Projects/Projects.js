@@ -11,29 +11,42 @@ function Projects() {
     const service = new FormService();
     const [projects, setProjects] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [projectMessage, setProjectMessage] = useState({ message: "", type: "" })
 
     const location = useLocation()
-    let message = ''
-    let type = ''
-
     if (location.state) {
-        message = location.state.message
-        type = location.state.type
+        setProjectMessage({ message: location.state.message, type: location.state.type })
     }
+
     useEffect(() => {
         setIsLoading(true)
         service.getProjects().then((res) => {
-            console.log(res)
             if (res.status != 500) {
                 setProjects(res.data)
-                setIsLoading(false)
             }
         }).catch((error) => {
-            setIsLoading(false)
             console.log('Error in getProjects: ', error)
-        })
+
+        }).finally(() => { setIsLoading(false) })
     }, [])
 
+    function deleteProject(id) {
+        setIsLoading(true)
+        service.deleteProject(id).then((res) => {
+            if (res.status == 200) {
+                setProjectMessage({ message: "Projeto excluido com sucesso !", type: "success" })
+                setProjects(projects.filter((project) => project.id !== id))
+            } else {
+                setProjectMessage({ message: "Problemas ao excluir projeto !", type: "error" })
+            }
+        }).catch((error) => {
+            setProjectMessage({ message: "Erro ao excluir projeto !", type: "error" })
+            console.log('Error in getProjects: ', error)
+        }).finally(() => {
+            setIsLoading(false)
+            setProjectMessage({ message: "", type: "" })
+        })
+    }
 
     return (
         <div className={styles.projectContainer}>
@@ -41,10 +54,10 @@ function Projects() {
                 <h1>Meus Projetos</h1>
                 <LinkButton to='/newproject' text='Criar Projeto' />
             </div>
-            {message && type && <Message timeOut={3500} type={type} msg={message} />}
+            {projectMessage && <Message msg={projectMessage.message} type={projectMessage.type} timeOut={3500} />}
             <Container customClass="start">
-                {projects.length > 0 && projects.map((project) => (
-                    <ProjectCard key={project.id} data={project} />
+                {projects.length > 0 && !isLoading && projects.map((project) => (
+                    <ProjectCard key={project.id} data={project} handleDeleteProject={deleteProject} />
                 ))}
                 {isLoading && <Loading />}
                 {!isLoading && projects.length === 0 && (<p>Não há Projetos cadastrados.</p>)}
