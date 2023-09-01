@@ -3,7 +3,7 @@ import styles from "./ProjectCard.module.css"
 import { BsFillTrashFill, BsPencil } from "react-icons/bs"
 function ProjectCard({ data, handleDeleteProject }) {
     const deleteThisProject = (e) => {
-        e.preventDefault()  
+        e.preventDefault()
         handleDeleteProject(data.id)
     }
     return (
@@ -17,7 +17,7 @@ function ProjectCard({ data, handleDeleteProject }) {
                 {data.categories.name}
             </p>
             <div className={styles.actions}>
-                <Link to="/">
+                <Link to={`/detailedProject/${data.id}`}>
                     <BsPencil /> Editar
                 </Link>
                 <button onClick={deleteThisProject}>

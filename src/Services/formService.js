@@ -9,6 +9,10 @@ export default class FormService {
         return await axiosInstance.get("projects")
     }
 
+    async getProjectById(id) {
+        return await axiosInstance.get(`projects/${id}`)
+    }
+
     async insertNewProject(request) {
         return await axiosInstance.post("projects", request)
     }
