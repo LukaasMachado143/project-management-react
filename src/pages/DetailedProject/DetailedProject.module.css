@@ -1,0 +1,50 @@
+.mainContent {
+    padding: 2em;
+}
+
+.mainContent h1,
+.mainContent h2,
+.mainContent p {
+    margin-bottom: .5em;
+}
+
+.mainContent h1 {
+    background-color: #222;
+    color: #ffbb33;
+    padding: .4em;
+}
+
+.mainContent span {
+    font-weight: bold;
+}
+
+.detailsContainer,
+.serviceContainer {
+    border-bottom: 1px solid #7a7a7a;
+    margin-bottom: 1.2em;
+    padding-bottom: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background-color: #222;
+    color: #fff;
+    padding: .5em 1em;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: .25em;
+    cursor: pointer;
+    max-height: 40px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: rgba(34, 34, 34, 0.85);
+    color: #ffbb33;
+}
+
+.projectInfo{
+    width: 100%;
+}
