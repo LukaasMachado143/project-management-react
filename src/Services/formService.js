@@ -20,4 +20,8 @@ export default class FormService {
     async deleteProject(id) {
         return await axiosInstance.delete(`projects/${id}`)
     }
+
+    async updateProject(request) {
+        return await axiosInstance.patch(`projects/${request.id}`, request)
+    }
 }
