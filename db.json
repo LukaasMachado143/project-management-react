@@ -31,8 +31,15 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 150,
+      "services": [
+        {
+          "name": "C# PARA INICIANTES",
+          "cost": "150",
+          "description": "adasdasdsadasd",
+          "id": "28698df0-cdab-4bf8-9d1b-46db9fb3fe97"
+        }
+      ],
       "id": 14
     }
   ],
