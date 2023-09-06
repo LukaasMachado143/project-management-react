@@ -4,14 +4,16 @@ import FormService from "../../Services/formService";
 import Loading from "../../components/Loading/Loading"
 import Container from "../../components/Container/Container"
 import styles from "./DetailedProject.module.css"
-import ServiceForm from "./ServiceForm/ServiceForm"
+import ServiceForm from "./Components/ServiceForm/ServiceForm"
 import ProjectForm from "../NewProject/components/ProjectForm";
 import Message from "../../components/Message/Message"
 import { parse, v4 as uuidv4 } from "uuid"
+import ServiceCard from "./Components/ServiceCard/ServiceCard";
 function DetailedProject() {
     const { id } = useParams()
     const service = new FormService()
     const [project, setProject] = useState([])
+    const [services, setServices] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState({ text: "", type: "" })
@@ -20,6 +22,7 @@ function DetailedProject() {
         service.getProjectById(id).then((res) => {
             if (res.status == 200) {
                 setProject(res.data);
+                setServices(res.data.services);
             }
         }).catch((error) => {
             console.log('Error in getProjectById: ', error);
@@ -87,6 +90,9 @@ function DetailedProject() {
         })
 
     }
+    function removeService() {
+
+    }
     return <>
         {project.name ? (<div className={styles.mainContent}>
             <Container customClass="column">
@@ -132,7 +138,10 @@ function DetailedProject() {
                 </div>
                 <h2>Serviços</h2>
                 <Container customClass="start">
-                    <p>Map de serviços existentes</p>
+                    {services.length > 0 && services.map((service) => (
+                        <ServiceCard service={service} key={service.id} handleRemoveService={removeService} />
+                    ))}
+                    {services.length === 0 && <p>Não há serviços cadastrado para esse projeto !</p>}
                 </Container>
             </Container>
         </div>) : (<Loading />)}
