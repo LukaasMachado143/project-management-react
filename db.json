@@ -1,14 +1,27 @@
 {
   "projects": [
     {
-      "name": "Teste",
+      "name": "Testeujiui",
       "budget": "50",
       "categories": {
         "id": "3",
         "name": "Design"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 50,
+      "services": [
+        {
+          "name": "asdasd",
+          "cost": "15",
+          "description": "asdasdasdas",
+          "id": "84d1a965-826b-4cc9-a326-21734f846bfe"
+        },
+        {
+          "name": "Novo Serviç",
+          "cost": "35",
+          "description": "Descrição do serviço",
+          "id": "670773b0-f31d-4d63-b649-4f74acd4fdc9"
+        }
+      ],
       "id": 13
     },
     {

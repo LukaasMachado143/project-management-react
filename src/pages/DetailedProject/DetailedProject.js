@@ -4,13 +4,16 @@ import FormService from "../../Services/formService";
 import Loading from "../../components/Loading/Loading"
 import Container from "../../components/Container/Container"
 import styles from "./DetailedProject.module.css"
+import ServiceForm from "./ServiceForm/ServiceForm"
 import ProjectForm from "../NewProject/components/ProjectForm";
 import Message from "../../components/Message/Message"
+import { parse, v4 as uuidv4 } from "uuid"
 function DetailedProject() {
     const { id } = useParams()
     const service = new FormService()
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
+    const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState({ text: "", type: "" })
 
     useEffect(() => {
@@ -25,6 +28,9 @@ function DetailedProject() {
 
     function toggleProjectForm() {
         setShowProjectForm(!showProjectForm)
+    }
+    function toggleServiceForm() {
+        setShowServiceForm(!showServiceForm)
     }
 
     function budgetValidate(budget, actualCost) {
@@ -51,7 +57,36 @@ function DetailedProject() {
         }
 
     }
+    function createService(project) {
+        const lastIndex = project.services.length - 1
+        const lastService = project.services[lastIndex]
+        lastService.id = uuidv4()
+        const lastServiceCost = lastService.cost
+        const newGeneralCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+        if (newGeneralCost > parseFloat(project.budget)) {
+            setMessage({ text: "Orçamento ultrapassado, verifique o valor do serviço !", type: "error" })
+            project.services.pop()
+            toggleServiceForm()
+            return;
+        }
 
+        project.cost = newGeneralCost
+
+        service.updateProject(project).then((res) => {
+            console.log("Resposta do CreateService: ", res)
+            if (res.status == 200) {
+                setMessage({ text: "Serviço adicionado com sucesso !", type: "success" })
+            } else {
+                setMessage({ text: "Problemas ao adicionar serviç !", type: "success" })
+
+            }
+        }).catch((error) => {
+            console.log("Error do CreateService: ", error)
+        }).finally(() => {
+            toggleServiceForm()
+        })
+
+    }
     return <>
         {project.name ? (<div className={styles.mainContent}>
             <Container customClass="column">
@@ -78,6 +113,27 @@ function DetailedProject() {
                         <p><span>Total Utilizado: </span>R$ {project.cost}</p>
                     </div>)}
                 </div>
+
+                <div className={styles.serviceContainer}>
+                    <h2>Adicionar um serviço</h2>
+                    <button className={styles.btn} onClick={toggleServiceForm}>
+                        {showServiceForm ? "Fechar" : "Adicionar"}
+                    </button>
+                    <div className={styles.projectInfo}>
+                        {showServiceForm && (
+                            <ServiceForm
+                                btnText="Adicionar"
+                                projectData={project}
+                                handleSubmit={createService}
+                            />
+                        )
+                        }
+                    </div>
+                </div>
+                <h2>Serviços</h2>
+                <Container customClass="start">
+                    <p>Map de serviços existentes</p>
+                </Container>
             </Container>
         </div>) : (<Loading />)}
     </>
