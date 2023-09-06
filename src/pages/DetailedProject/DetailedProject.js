@@ -90,9 +90,30 @@ function DetailedProject() {
         })
 
     }
-    function removeService() {
+    function removeService(id, cost) {
+        const updatedServices = project.services.filter((service) => service.id !== id)
+
+        const updatedSProject = project
+
+        updatedSProject.services = updatedServices
+        updatedSProject.cost -= parseFloat(cost)
+
+        service.updateProject(updatedSProject).then((res) => {
+            if (res.status == 200) {
+                setMessage({ text: "Serviço removido com sucesso!", type: "success" })
+                setProject(updatedSProject)
+                setServices(updatedServices)
+            }
+            else {
+                setMessage({ text: "Problemas ao remover serviço !", type: "error" })
+            }
+        }).catch((error) => {
+            console.log("Erro do updateProject: ", error)
+            setMessage({ text: "Erro ao remover serviço !", type: "error" })
+        })
 
     }
+    
     return <>
         {project.name ? (<div className={styles.mainContent}>
             <Container customClass="column">
