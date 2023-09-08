@@ -1,0 +1,22 @@
+.titleSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.titleSection button {
+    border: none;
+    cursor: pointer;
+}
+
+.titleSection button svg {
+    font-size: 30px;
+}
+
+.titleSection button svg:hover {
+    color: #ffbb33;
+    scale: 1.2;
+    background-color: #222;
+    border-radius: 50%;
+}

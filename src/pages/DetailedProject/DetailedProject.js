@@ -44,7 +44,6 @@ function DetailedProject() {
     function editProject(projectData) {
         if (budgetValidate(projectData.budget, projectData.cost) == true) {
             service.updateProject(projectData).then((res) => {
-                console.log('Resposta do updateProject: ', res)
                 if (res.status == 200) {
                     setProject(res.data)
                     setMessage({ text: "Projeto atualizado com sucesso !", type: "success" })
@@ -76,7 +75,6 @@ function DetailedProject() {
         project.cost = newGeneralCost
 
         service.updateProject(project).then((res) => {
-            console.log("Resposta do CreateService: ", res)
             if (res.status == 200) {
                 setMessage({ text: "Serviço adicionado com sucesso !", type: "success" })
             } else {

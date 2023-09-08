@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer'
 import Container from './components/Container/Container'
 import Projects from "./pages/Projects/Projects";
 import DetailedProject from "./pages/DetailedProject/DetailedProject";
-
+import Settings from "./pages/Settings/Settings"
 function App() {
   return (
     <Router>
@@ -22,6 +22,7 @@ function App() {
           <Route path="/newproject" element={<NewProject />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/detailedProject/:id" element={<DetailedProject />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Container>
       <Footer />

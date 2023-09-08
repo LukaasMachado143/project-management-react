@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Container from '../Container/Container'
 import styles from './Header.module.css'
 import logo from '../../img/costs_logo.png'
+import {BsFillGearFill} from "react-icons/bs"
 function Header() {
     return (
         <nav className={styles.header}>
@@ -19,6 +20,9 @@ function Header() {
                     </li>
                     <li className={styles.item}>
                         <Link to="/company">Sobre a Empresa</Link>
+                    </li>
+                    <li className={styles.item}>
+                        <Link to="/settings"><BsFillGearFill /></Link>
                     </li>
                 </ul>
             </Container>

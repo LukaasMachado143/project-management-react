@@ -1,0 +1,54 @@
+.listContainer {
+    width: 100%;
+    height: auto;
+    overflow-x: none;
+    overflow-y: auto;
+}
+
+.listContainer li {
+    text-transform: uppercase;
+    color: #222;
+    font-weight: bold;
+    border: 2px solid #222;
+    border-radius: 8px;
+    margin: 5px 0px;
+    list-style: none;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listContainer li:hover,
+.selected {
+    color: #ffbb33 !important;
+    background-color: rgb(34, 34, 34, 0.8);
+}
+
+.listContainer .actionArea svg {
+    font-size: 20px;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+.listContainer .actionAreaEditMode svg {
+    font-size: 25px;
+    margin: 0px 3px;
+    cursor: pointer;
+}
+
+.listContainer .actionArea svg:hover,
+.listContainer .actionAreaEditMode svg:hover {
+    color: white;
+    scale: 1.3;
+}
+
+.listContainer li input {
+    padding: .3em;
+    border-radius: 0;
+    border: none;
+    width: 94%;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+}
