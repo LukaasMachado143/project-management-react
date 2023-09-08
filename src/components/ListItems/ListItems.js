@@ -32,7 +32,7 @@ function ListItems({ listItems, handleEdit }) {
                                     :
                                     (
                                         <>
-                                            {item.id} - {item.name}
+                                            {item.name}
                                             <div className={styles.actionArea} >
                                                 <BsFillPencilFill onClick={() => { setEditItem(item) }} />
                                                 <BsFillTrashFill onClick={() => { handleEdit(item.id) }} />

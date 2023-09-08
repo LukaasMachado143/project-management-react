@@ -4,9 +4,9 @@ import SubmitButton from "../../../../../../components/Inputs/SubmitButton/Submi
 import { useEffect, useState } from "react";
 import { parse, v4 as uuidv4 } from "uuid"
 
-function CategoryForm() {
+function CategoryForm({ handleCreateCategory }) {
     const [newCategory, setNewCategory] = useState({})
-    
+
     useEffect(() => {
         const newId = uuidv4()
         setNewCategory({ ...newCategory, id: newId })
@@ -18,7 +18,7 @@ function CategoryForm() {
 
     function submit(e) {
         e.preventDefault();
-        console.log(newCategory)
+        handleCreateCategory(newCategory)
     }
 
     return (

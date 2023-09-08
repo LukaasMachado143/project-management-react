@@ -16,7 +16,7 @@ function CategoryMain() {
     function getAllCategories() {
         setlistCategories([])
         service.getCategories().then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 setlistCategories(res.data)
             }
         }).catch((error) => {
@@ -30,7 +30,7 @@ function CategoryMain() {
 
     function deleteCategory(id) {
         service.deleteCategory(id).then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 const categories = listCategories.filter((category) => category.id !== id)
                 setlistCategories(categories)
             }
@@ -41,7 +41,7 @@ function CategoryMain() {
 
     function editCategory(item) {
         service.editCategory(item).then((res) => {
-            if (res.status == 200) {
+            if (res.status === 200) {
                 const updatedList = [...listCategories]
                 const index = updatedList.findIndex((category) => category.id === item.id)
                 updatedList[index].name = item.name
@@ -55,32 +55,43 @@ function CategoryMain() {
     function handleExistingCategory(categoryData) {
         if (typeof categoryData === "object") {
             editCategory(categoryData)
-        } else if (typeof categoryData === "number") {
-            deleteCategory(Number(categoryData))
+        } else if (typeof categoryData === "number" || typeof categoryData === "string") {
+            deleteCategory(categoryData)
         }
     }
 
-    return (<>
-        <div className={styles.titleSection}>
-            <h2>Categorias:</h2>
-            <button onClick={handleCategoryForm}>
-                {showCategoryForm ? (<PiXCircleBold />) : (<PiPlusCircleBold />)}
-            </button>
-        </div>
-        <div className={styles.section}>
-            {showCategoryForm ?
-                (
-                    <CategoryForm />
-                )
-                :
-                (
-                    <ListItems listItems={listCategories} handleEdit={handleExistingCategory} />
-                )
+    function createCategory(data) {
+        service.addCategory(data).then((res) => {
+            if (res.status === 201) {
+                setlistCategories([...listCategories, data])
+                handleCategoryForm()
             }
+        }).catch((error) => {
+            console.log("Erro do createCategory: ", error)
+        })
+    }
 
-        </div>
-    </>
+    return (
+        <>
+            <div className={styles.titleSection}>
+                <h2>Categorias:</h2>
+                <button onClick={handleCategoryForm}>
+                    {showCategoryForm ? (<PiXCircleBold />) : (<PiPlusCircleBold />)}
+                </button>
+            </div>
+            <div className={styles.section}>
+                {showCategoryForm ?
+                    (
+                        <CategoryForm handleCreateCategory={createCategory} />
+                    )
+                    :
+                    (
+                        <ListItems listItems={listCategories} handleEdit={handleExistingCategory} />
+                    )
+                }
 
+            </div>
+        </>
     );
 }
 

@@ -12,4 +12,8 @@ export default class SettingsService {
     async editCategory(categoryData) {
         return await axiosInstance.patch(`categories/${categoryData.id}`, categoryData)
     }
+
+    async addCategory(categoryData) {
+        return await axiosInstance.post("categories", categoryData)
+    }
 }
