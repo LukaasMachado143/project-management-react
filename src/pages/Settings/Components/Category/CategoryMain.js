@@ -3,6 +3,7 @@ import ListItems from "../../../../components/ListItems/ListItems";
 import SettingsService from "../../../../Services/settingsService";
 import { PiPlusCircleBold, PiXCircleBold } from 'react-icons/pi'
 import styles from './CategoryMain.module.css'
+import CategoryForm from "./Components/CategoryForm/CategoryForm";
 function CategoryMain() {
     const service = new SettingsService();
     const [listCategories, setlistCategories] = useState([])
@@ -51,7 +52,7 @@ function CategoryMain() {
         })
     }
 
-    function handleCategory(categoryData) {
+    function handleExistingCategory(categoryData) {
         if (typeof categoryData === "object") {
             editCategory(categoryData)
         } else if (typeof categoryData === "number") {
@@ -69,11 +70,11 @@ function CategoryMain() {
         <div className={styles.section}>
             {showCategoryForm ?
                 (
-                    <h3>Form</h3>
+                    <CategoryForm />
                 )
                 :
                 (
-                    <ListItems listItems={listCategories} handleEdit={handleCategory} />
+                    <ListItems listItems={listCategories} handleEdit={handleExistingCategory} />
                 )
             }
 
